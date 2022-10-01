@@ -1,7 +1,22 @@
 /* take picture section */
 
-.take-picture {
+.table-header {
   height: 100vh;
+}
+
+.take-picture{
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.button{
+  justify-content: center;
+  height: 60px;
+  border: 3px  green;
+  color: green;
+  background-color: #4CAF50;
+  padding: 15px 32px;
+  margin-left: 100px;
 }
 
 /* display nutrients section */
