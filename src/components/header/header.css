@@ -32,6 +32,8 @@
   font-weight: 500;
   font-size: 2rem;
 
+  color: var(--dark-green);
+
   transition: all 0.3s;
 }
 
@@ -86,6 +88,8 @@
 
 #try-it-out:link,
 #try-it-out:visited {
+  display: inline-block;
+
   color: var(--background-white);
 
   border-radius: var(--border-radius);

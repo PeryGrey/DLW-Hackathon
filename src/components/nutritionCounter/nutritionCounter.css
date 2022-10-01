@@ -1,0 +1,42 @@
+/* take picture section */
+
+.take-picture {
+  height: 100vh;
+}
+
+/* display nutrients section */
+
+.foodContainer {
+  height: 85vh;
+}
+
+.foodTable {
+  padding-top: 2rem;
+
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 2rem 2rem;
+
+  align-items: center;
+  justify-items: center;
+
+  font-size: 1.5rem;
+}
+
+.table-header {
+  font-size: 2rem;
+  color: var(--brand-green);
+}
+
+.tableFoodEl {
+  font-size: 2.5rem;
+  color: var(--dark-green);
+
+  justify-self: start;
+}
+
+.tableEL {
+  border: 1px black solid;
+  padding: 1rem;
+  background-color: violet;
+}

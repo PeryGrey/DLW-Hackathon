@@ -1,27 +1,32 @@
 import React, { useState } from 'react';
+import { Route, Routes, Link } from 'react-router-dom';
 
 import './header.css';
 
 export default function Header() {
   return (
-    <nav class="nav-bar">
-      <header class="container header">
-        <div class="nav-name-div">
-          <a class="nav-name" href="#">
+    <nav className="nav-bar">
+      <header className="container header">
+        <div className="nav-name-div">
+          <Link to="/" className="nav-name">
             NomNom
-          </a>
+          </Link>
         </div>
-        <nav class="main-nav">
-          <ul class="main-nav-list">
+        <nav className="main-nav">
+          <ul className="main-nav-list">
             <li>
-              <a class="main-nav-link underlines" href="#">
+              <Link to="/login" className="main-nav-link underlines">
                 Login
-              </a>
+              </Link>
             </li>
             <li>
-              <a class="main-nav-link underlines" id="try-it-out" href="#">
+              <Link
+                to="/calorie-counter"
+                className="main-nav-link underlines"
+                id="try-it-out"
+              >
                 Try It Out
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
