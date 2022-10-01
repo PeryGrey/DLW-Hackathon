@@ -19,7 +19,7 @@ export default function NutritionCounter() {
     setImgSrc(imageSrc);
   }, [webcamRef, setImgSrc]);
 
-  function handleTakePhotoAnimationDone(dataUri) {
+  function handleTakePhotoAnimationDone(dataUriadd) {
     console.log('takePhoto');
     setDataUri(dataUri);
   }
@@ -27,19 +27,21 @@ export default function NutritionCounter() {
   const isFullscreen = false;
 
   return (
-    <div className="container take-picture">
+    <div className="container table-header">
       <h1 className="topic-header">Let's take a picture of your food!</h1>
-      <Webcam
-        audio={false}
-        ref={webcamRef}
-        screenshotFormat="image/jpeg"
-      />
-      <button onClick={capture}>Capture photo</button>
-      {imgSrc && (
-        <img
-          src={imgSrc}
+      <div className = "container take-picture">
+        <Webcam
+          audio={false}
+          ref={webcamRef}
+          screenshotFormat="image/jpeg"
         />
-      )}
+        {imgSrc && (
+          <img
+            src={imgSrc}
+          />
+        )}
+      </div>
+      <button className = "container button"onClick={capture}>Capture photo</button>
     </div>
   );
 }
