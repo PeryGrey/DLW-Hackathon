@@ -1,0 +1,50 @@
+:root {
+  --dark-grey: #2a2a2a;
+  --background-white: #fcfcfc;
+  --brand-green: #26a739;
+  --hover-green: #1e862e;
+
+  --border-radius: 0.5rem;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  background-color: var(--background-white);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+
+  line-height: 1;
+  font-weight: 300;
+  color: var(--dark-grey);
+
+  -webkit-animation: fadeInAnimation ease 1.8s;
+  -moz-animation: fadeInAnimation ease 1.8s;
+  -ms-animation: fadeInAnimation ease 1.8s;
+  -o-animation: fadeInAnimation ease 1.8s;
+  animation: fadeInAnimation ease 1.8s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+/**************************/
+/* GENRAL REUSABLE COMPONENTS */
+/**************************/
+
+.container {
+  max-width: 150rem;
+  padding: 0 8rem;
+  margin: 0 auto;
+}
+
+.hide {
+  display: none;
+}

@@ -1,0 +1,98 @@
+.nav-bar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+
+  display: block;
+
+  background-color: var(--background-white);
+  box-shadow: 0 0.1rem 2rem #adb1b31c;
+  z-index: 5;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 7rem;
+  position: relative;
+}
+
+.nav-name-div {
+  position: relative;
+}
+
+.nav-name:link,
+.nav-name:visited {
+  display: inline-block;
+  text-decoration: none;
+  color: #1c1f22;
+  font-weight: 500;
+  font-size: 2rem;
+
+  transition: all 0.3s;
+}
+
+.nav-name:active,
+.nav-name:hover {
+}
+
+.main-nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.name-hover {
+  -webkit-transition: opacity 0.1s ease-in-out;
+  -moz-transition: opacity 0.1s ease-in-out;
+  -o-transition: opacity 0.1s ease-in-out;
+  transition: opacity 0.1s ease-in-out;
+
+  position: absolute;
+  top: -2.05rem;
+  left: -2.75rem;
+
+  z-index: 2;
+
+  width: 20rem;
+  height: auto;
+
+  opacity: 0;
+}
+
+.name-hover:hover {
+  opacity: 1;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--dark-grey);
+  font-weight: 500;
+  font-size: 1.5rem;
+  transition: all 0.3s;
+
+  padding: 1.1rem 2.2rem 1rem;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active {
+}
+
+#try-it-out:link,
+#try-it-out:visited {
+  color: var(--background-white);
+
+  border-radius: var(--border-radius);
+  background-color: var(--brand-green);
+}
+
+#try-it-out:hover,
+#try-it-out:active {
+  background-color: var(--hover-green);
+}
