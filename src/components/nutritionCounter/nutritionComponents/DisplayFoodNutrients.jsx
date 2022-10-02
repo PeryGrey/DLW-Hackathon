@@ -1,42 +1,28 @@
 import React, { useState, useEffect } from 'react';
 
-// import Chart.js
-// import Chart from 'chart.js/auto';
-// import { getRelativePosition } from 'chart.js/helpers';
-// import { Pie } from 'react-chartjs-2';
+import PieChart from './PieChart';
 
 export default function DisplayFoodNutrients() {
-  const [foodData, setFoodData] = React.useState([]);
+  const [foodData, setFoodData] = useState([
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  ]);
 
-  const [chartData, setChartData] = useState({});
-
-  // const URL = `https://trackapi.nutritionix.com/v2/search/instant?query=grilled-cheese
-  // `;
-
-  // useEffect(() => {
-  //   fetch(
-  //     'https://trackapi.nutritionix.com/v2/search/instant?query=grilled-cheese',
-  //     {
-  //       headers: {
-  //         'x-app-id': '3c79e1db',
-  //         'x-app-key': '2895bc848b17820c22877654ba3dd8a4',
-  //       },
-  //     }
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => data.common[0])
-  //     .then((value) => console.log(value));
-
-  //   // .then((data) => console.log(data[0]));
-  // }, []);
+  function capitalise(str) {
+    var splitStr = str.toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++) {
+      splitStr[i] =
+        splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    return splitStr.join(' ');
+  }
 
   useEffect(() => {
     var myHeaders = new Headers();
-    myHeaders.append('x-app-id', '3c79e1db');
-    myHeaders.append('x-app-key', 'd427f3a386c34510beb31097aa32e6da');
+    myHeaders.append('x-app-id', '7ef947a8');
+    myHeaders.append('x-app-key', '3003e8379fce3819f7d6d4d918a2b8cb');
     myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
     var urlencoded = new URLSearchParams();
-    urlencoded.append('query', 'apple');
+    urlencoded.append('query', 'Nasi-Lemak');
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
@@ -49,10 +35,10 @@ export default function DisplayFoodNutrients() {
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => result)
       .then((data) => {
+        console.log(data);
         setFoodData([
-          data.foods[0]?.food_name,
+          capitalise(data.foods[0].food_name),
           data.foods[0].nf_calories?.toFixed(1),
           data.foods[0].nf_total_fat?.toFixed(1),
           data.foods[0].nf_total_carbohydrate?.toFixed(1),
@@ -66,65 +52,16 @@ export default function DisplayFoodNutrients() {
           data.foods[0].nf_p?.toFixed(1),
           data.foods[0].nf_nutrients?.toFixed(1),
         ]);
-        // setChartData({
-        //   labels: ['Fat', 'Carbs', 'Protein'],
-        //   datasets: [
-        //     {
-        //       label: 'Sources of Calories',
-        //       data: [foodData[2], foodData[3], foodData[4]],
-        //       backgroundColor: [
-        //         'rgb(255, 99, 132)',
-        //         'rgb(54, 162, 235)',
-        //         'rgb(255, 205, 86)',
-        //       ],
-        //       hoverOffset: 4,
-        //     },
-        //   ],
-        // });
       })
       .catch((error) => console.log('error', error));
   }, []);
 
-  // pie chart
-  // const data = {
-  //   labels: ['Fat', 'Carbs', 'Protein'],
-  //   datasets: [
-  //     {
-  //       label: 'My First Dataset',
-  //       data: [foodData[2], foodData[3], foodData[4]],
-  //       backgroundColor: [
-  //         'rgb(255, 99, 132)',
-  //         'rgb(54, 162, 235)',
-  //         'rgb(255, 205, 86)',
-  //       ],
-  //       hoverOffset: 4,
-  //     },
-  //   ],
-  // };
-
-  // const ctx = document.getElementById('myChart');
-  // const chart = new Chart(ctx, {
-  //   type: 'pie',
-  //   data: data,
-  //   options: {
-  //     onClick: (e) => {
-  //       const canvasPosition = getRelativePosition(e, chart);
-
-  //       // Substitute the appropriate scale IDs
-  //       const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
-  //       const dataY = chart.scales.y.getValueForPixel(canvasPosition.y);
-  //     },
-  //   },
-  // });
-
   return (
     <div>
       <div className="container food-container">
+        <h1 className="topic-header">Nutrients provided by {foodData[0]}</h1>
         <div>
           <div>
-            <h1 className="topic-header">
-              Nutrients provided by {foodData[0]}
-            </h1>
             <div className="side-by-side">
               <div className="nutrition">
                 {/* section 1 */}
@@ -139,79 +76,56 @@ export default function DisplayFoodNutrients() {
                   <p>
                     <span className="bold">Calories</span> {foodData[1]}
                   </p>
-                  {/* #TODO */}
-                  <p>Calories from Fat add value {}</p>
                 </div>
                 {/* section 3 */}
-                <p className="nutri-text right-align bold">% Daily Value</p>
+
                 <div className=" nutri-text split-row">
                   <p>
-                    {/* #TODO */}
                     <span className="bold">Total Fat </span> {foodData[2]}g
                   </p>
-                  <p>get serving size weight {}%</p>
                 </div>
                 <div className="nutri-text split-row nutri-tab">
-                  <p>
-                    {/* #TODO */}
-                    Saturated Fat {foodData[5]}g
-                  </p>
-                  <p>get serving size weight {}%</p>
+                  <p>Saturated Fat {foodData[5]}g</p>
                 </div>
                 <div className=" nutri-text split-row">
                   <p>
-                    {/* #TODO */}
                     <span className="bold">Cholesterol </span> {foodData[6]}mg
                   </p>
-                  <p>get serving size weight {}%</p>
                 </div>
                 <div className=" nutri-text split-row">
                   <p>
-                    {/* #TODO */}
                     <span className="bold">Sodium </span> {foodData[7]}mg
                   </p>
-                  <p>get serving size weight {}%</p>
                 </div>
                 <div className=" nutri-text split-row">
                   <p>
-                    {/* #TODO */}
                     <span className="bold">Potassium </span> {foodData[10]}mg
                   </p>
-                  <p>get serving size weight {}%</p>
                 </div>
                 <div className=" nutri-text split-row">
                   <p>
-                    {/* #TODO */}
                     <span className="bold">Total Carbohydrates </span>{' '}
                     {foodData[2]}g
                   </p>
-                  <p>get serving size weight {}%</p>
                 </div>
                 <div className="nutri-text split-row nutri-tab">
-                  <p>
-                    {/* #TODO */}
-                    Dietary Fiber {foodData[8]}g
-                  </p>
-                  <p>get serving size weight {}%</p>
+                  <p>Dietary Fiber {foodData[8]}g</p>
                 </div>
                 <div className="nutri-text nutri-tab">
-                  <p>
-                    {/* #TODO */}
-                    Sugars {foodData[9]}g
-                  </p>
+                  <p>Sugars {foodData[9]}g</p>
                 </div>
                 <div className=" nutri-text">
                   <p>
-                    {/* #TODO */}
                     <span className="bold">Protein </span> {foodData[4]}g
                   </p>
                 </div>
-                <p className="foot-note">
-                  * Percent Daily Values are based on a 2000 calorie diet.
-                </p>
               </div>
 
-              {/* <Chart chartData={chartData} /> */}
+              <PieChart
+                fats={foodData[1]}
+                carbs={foodData[2]}
+                protein={foodData[3]}
+              />
             </div>
           </div>
         </div>

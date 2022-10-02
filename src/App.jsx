@@ -11,13 +11,13 @@ import './general.css';
 
 export default function App() {
   return (
-    <>
+    <div>
       <Header />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/calorie-counter" element={<NutritionCounter />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }

@@ -1,30 +1,47 @@
 /* take picture section */
 
-.takePhotoContainer {
+.take-photo-container {
   height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.take-picture {
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: space-between;
+.capture-photo-btn {
+  color: var(--background-white);
+
+  border-radius: var(--border-radius);
+  border: none;
+
+  background-color: var(--brand-green);
+
+  display: inline-block;
+  text-decoration: none;
+  color: var(--background-white);
+  font-weight: 500;
+  font-size: 2.2rem;
+  transition: all 0.3s;
+
+  padding: 1.1rem 2.2rem 1rem;
 }
-.button {
-  justify-content: center;
-  height: 60px;
-  border: 3px green;
-  color: green;
-  background-color: #4caf50;
-  padding: 15px 32px;
-  margin-left: 100px;
+
+.capture-photo-btn:hover,
+.capture-photo-btn:active {
+  background-color: var(--hover-green);
+}
+
+.take-photo {
+  padding-bottom: 3rem;
 }
 
 /* display nutrients section */
 
 .food-container {
-  height: 85vh;
+  height: 90vh;
   display: flex;
-  justify-items: center;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -38,6 +55,7 @@
   padding-top: 4rem;
 
   display: flex;
+  gap: 8rem;
   justify-content: space-evenly;
 }
 
@@ -70,7 +88,7 @@
   grid-template-rows: 5rem repeat(auto-fill, 2rem); */
   width: 40rem;
 
-  padding: 0.5rem 1.5rem;
+  padding: 0.7rem 1.5rem;
 
   border: var(--dark-grey) solid 0.2rem;
 }
@@ -121,7 +139,7 @@
 }
 
 .nutri-tab {
-  margin-left: 3rem;
+  margin-left: 4rem;
 }
 
 .foot-note {
