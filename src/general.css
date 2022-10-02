@@ -17,7 +17,7 @@
 
 html {
   font-size: 62.5%;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   background-color: var(--background-white);
   height: 100%;
 }

@@ -4,7 +4,7 @@
   width: 100%;
   overflow: hidden;
 
-  display: block;
+  /* display: block; */
 
   background-color: var(--background-white);
   box-shadow: 0 0.1rem 2rem #adb1b31c;

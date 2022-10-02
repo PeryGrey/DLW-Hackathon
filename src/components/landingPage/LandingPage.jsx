@@ -8,9 +8,11 @@ import noodles from '../../assets/pictures/noodles.jpg';
 export default function LandingPage() {
   return (
     <div className="container landing-header">
+      <img className="noodles-pic" src={noodles} alt="pretty-hawker-noodles" />
+
       <div>
         <h2 className="topic-header">
-          Journaling Your Food Journey with the <br /> Click of a 📸
+          Journaling Your Food Journey with a Click of a 📸
         </h2>
 
         <p className="topic-text">
@@ -23,8 +25,6 @@ export default function LandingPage() {
           Try It Out!
         </Link>
       </div>
-
-      <img className="noodles-pic" src={noodles} alt="pretty-hawker-noodles" />
     </div>
   );
 }

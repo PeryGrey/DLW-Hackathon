@@ -8,6 +8,7 @@ import LandingPage from './components/landingPage/LandingPage';
 import NutritionCounter from './components/nutritionCounter/NutritionCounter';
 
 import './general.css';
+import './general-query.css';
 
 export default function App() {
   return (

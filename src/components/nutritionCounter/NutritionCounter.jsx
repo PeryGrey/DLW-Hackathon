@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 
+import axios from 'axios';
+
 import './nutritionCounter.css';
 
 // import TakePhoto from './nutritionComponents/TakePhoto';
@@ -25,11 +27,54 @@ export default function NutritionCounter() {
   const [imgSrc, setImgSrc] = React.useState(null);
 
   const capture = React.useCallback(() => {
+    // smooth scrolling
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
+
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
 
-    // smooth scrolling
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
+    // const ImgJSON = JSON.stringify(getBase64Image(imageSrc));
+
+    // console.log(imageSrc);
+
+    // const handleSubmit = async (event) => {
+    //   event.preventDefault();
+    //   const formData = new FormData();
+    //   formData.append('image', imageSrc);
+    //   try {
+    //     const response = await axios.post(
+    //       'http://116.87.92.8:8000/model',
+    //       formData,
+    //       {
+    //         headers: {
+    //           accept: 'application/json',
+    //           'Accept-Language': 'en-US,en;q=0.8',
+    //           'Content-Type': 'multipart/form-data',
+    //         },
+    //       }
+    //     );
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+
+    // axios.post('http://116.87.92.8:8000/model', imgSrc);
+
+    let apiUrl = 'http://116.87.92.8:8000/model';
+
+    let formData = new FormData();
+    formData.append('photo', imgSrc);
+
+    let options = {
+      method: 'POST',
+      body: formData,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'multipart/form-data',
+      },
+    };
+
+    return fetch(apiUrl, options);
   }, [webcamRef, setImgSrc]);
 
   function handleTakePhotoAnimationDone(dataUriadd) {
@@ -40,7 +85,7 @@ export default function NutritionCounter() {
   const isFullscreen = false;
 
   const [foodData, setFoodData] = useState([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 10, 30, 50, 0, 0, 0, 0, 0, 0, 0, 0,
   ]);
 
   function capitalise(str) {
@@ -54,11 +99,11 @@ export default function NutritionCounter() {
 
   useEffect(() => {
     var myHeaders = new Headers();
-    myHeaders.append('x-app-id', '7ef947a8');
-    myHeaders.append('x-app-key', '3003e8379fce3819f7d6d4d918a2b8cb');
+    myHeaders.append('x-app-id', 'c2ab3c41');
+    myHeaders.append('x-app-key', 'a51729ce5f4359f145dc275843208efe');
     myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
     var urlencoded = new URLSearchParams();
-    urlencoded.append('query', 'Nasi-Lemak');
+    urlencoded.append('query', 'hainanese chicken rice');
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
@@ -72,7 +117,7 @@ export default function NutritionCounter() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setFoodData([
           capitalise(data.foods[0].food_name),
           data.foods[0].nf_calories?.toFixed(1),
@@ -99,7 +144,6 @@ export default function NutritionCounter() {
         <h1 className="topic-header">Let's take a picture of your food!</h1>
         <div className="take-photo">
           <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpeg" />
-          {imgSrc && <img src={imgSrc} />}
         </div>
         <button className="capture-photo-btn" onClick={capture}>
           Capture photo
@@ -109,7 +153,9 @@ export default function NutritionCounter() {
       {/* <DisplayFoodNutrients /> */}
       <div>
         <div className="container food-container" ref={ref}>
-          <h1 className="topic-header">Nutrients provided by {foodData[0]}</h1>
+          <h1 className="topic-header">
+            Nutrients provided by <br /> {foodData[0]}
+          </h1>
           <div>
             <div>
               <div className="side-by-side">

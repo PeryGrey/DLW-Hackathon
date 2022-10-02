@@ -1,0 +1,90 @@
+/* 1150px */
+@media only screen and (max-width: 72em) {
+  html {
+    font-size: 50%;
+  }
+
+  .landing-header {
+    gap: 6rem;
+  }
+}
+
+/* 946px */
+@media only screen and (max-width: 60em) {
+  /* header */
+  .nav-name:link,
+  .nav-name:visited {
+    font-size: 2.2rem;
+  }
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: 2rem;
+  }
+
+  /* landing */
+  .container {
+    max-width: 100rem;
+  }
+
+  .landing-header {
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 3rem;
+  }
+
+  .noodles-pic {
+    width: 40rem;
+    align-self: start;
+  }
+
+  .landing--try-it-out {
+    font-size: 2.6rem;
+  }
+
+  /* nutrition */
+  .take-photo-container {
+    height: 93vh;
+    align-items: center;
+  }
+
+  .food-container {
+    height: 89vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .side-by-side {
+    flex-direction: column;
+    align-items: center;
+    gap: 6rem;
+  }
+}
+
+/* 768px */
+@media only screen and (max-width: 33em) {
+  html {
+    font-size: 45%;
+  }
+
+  .container {
+    padding: 0 6rem;
+    /* max-width: 100%; */
+  }
+
+  .topic-header {
+    line-height: 1.05;
+  }
+
+  .take-photo-container {
+    height: 100vh;
+    overflow-x: hidden !important;
+  }
+}
+
+/* 475px */
+@media only screen and (max-width: 24em) {
+  html {
+    font-size: 35%;
+  }
+}
