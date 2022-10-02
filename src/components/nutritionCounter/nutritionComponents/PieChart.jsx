@@ -42,8 +42,8 @@ export default function PieChart(props) {
             },
           ],
         }}
-        height={200}
-        width={300}
+        height={300}
+        width={450}
         options={{
           maintainAspectRatio: false,
           scales: {
