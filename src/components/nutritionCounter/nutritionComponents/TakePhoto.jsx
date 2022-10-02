@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
-import Webcam from "react-webcam";
+import Webcam from 'react-webcam';
 
 // camera imports
 import Camera from 'react-html5-camera-photo';
@@ -27,21 +27,15 @@ export default function NutritionCounter() {
   const isFullscreen = false;
 
   return (
-    <div className="container table-header">
+    <div className="container takePhotoContainer">
       <h1 className="topic-header">Let's take a picture of your food!</h1>
-      <div className = "container take-picture">
-        <Webcam
-          audio={false}
-          ref={webcamRef}
-          screenshotFormat="image/jpeg"
-        />
-        {imgSrc && (
-          <img
-            src={imgSrc}
-          />
-        )}
+      <div className="take-photo">
+        <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpeg" />
+        {imgSrc && <img src={imgSrc} />}
       </div>
-      <button className = "container button"onClick={capture}>Capture photo</button>
+      <button className="container button" onClick={capture}>
+        Capture photo
+      </button>
     </div>
   );
 }
