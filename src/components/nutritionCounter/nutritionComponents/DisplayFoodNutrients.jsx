@@ -3,12 +3,15 @@ import React, { useState, useEffect } from 'react';
 // import Chart.js
 // import Chart from 'chart.js/auto';
 // import { getRelativePosition } from 'chart.js/helpers';
+// import { Pie } from 'react-chartjs-2';
 
 export default function DisplayFoodNutrients() {
   const [foodData, setFoodData] = React.useState([]);
 
-  const URL = `https://trackapi.nutritionix.com/v2/search/instant?query=grilled-cheese
-  `;
+  const [chartData, setChartData] = useState({});
+
+  // const URL = `https://trackapi.nutritionix.com/v2/search/instant?query=grilled-cheese
+  // `;
 
   // useEffect(() => {
   //   fetch(
@@ -30,7 +33,7 @@ export default function DisplayFoodNutrients() {
   useEffect(() => {
     var myHeaders = new Headers();
     myHeaders.append('x-app-id', '3c79e1db');
-    myHeaders.append('x-app-key', '979e5ed954ef9515c8412481074077d1');
+    myHeaders.append('x-app-key', 'd427f3a386c34510beb31097aa32e6da');
     myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
     var urlencoded = new URLSearchParams();
     urlencoded.append('query', 'apple');
@@ -40,13 +43,14 @@ export default function DisplayFoodNutrients() {
       body: urlencoded,
       redirect: 'follow',
     };
+
     fetch(
       'https://trackapi.nutritionix.com/v2/natural/nutrients',
       requestOptions
     )
       .then((response) => response.json())
       .then((result) => result)
-      .then((data) =>
+      .then((data) => {
         setFoodData([
           data.foods[0]?.food_name,
           data.foods[0].nf_calories?.toFixed(1),
@@ -61,8 +65,23 @@ export default function DisplayFoodNutrients() {
           data.foods[0].nf_potassium?.toFixed(1),
           data.foods[0].nf_p?.toFixed(1),
           data.foods[0].nf_nutrients?.toFixed(1),
-        ])
-      )
+        ]);
+        // setChartData({
+        //   labels: ['Fat', 'Carbs', 'Protein'],
+        //   datasets: [
+        //     {
+        //       label: 'Sources of Calories',
+        //       data: [foodData[2], foodData[3], foodData[4]],
+        //       backgroundColor: [
+        //         'rgb(255, 99, 132)',
+        //         'rgb(54, 162, 235)',
+        //         'rgb(255, 205, 86)',
+        //       ],
+        //       hoverOffset: 4,
+        //     },
+        //   ],
+        // });
+      })
       .catch((error) => console.log('error', error));
   }, []);
 
@@ -192,9 +211,7 @@ export default function DisplayFoodNutrients() {
                 </p>
               </div>
 
-              <div>
-                <canvas id="myChart" width="400" height="400"></canvas>
-              </div>
+              {/* <Chart chartData={chartData} /> */}
             </div>
           </div>
         </div>
